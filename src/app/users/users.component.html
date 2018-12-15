@@ -1,0 +1,5 @@
+<div *ngFor="let item of list">
+  <p>{{ item | json }}</p>
+  <button [routerLink]="['/edit', item._id]">Edit</button>
+  <button (click)="deleteemp(item._id)">Delete</button>
+</div>

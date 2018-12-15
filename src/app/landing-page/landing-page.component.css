@@ -1,0 +1,11 @@
+.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.ng-valid.ng-touched {
+  border-color: greenyellow;
+}
+input:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}

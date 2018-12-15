@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <form [formGroup]="loginForm" *ngIf="showLoginForm">
+        <legend>Login</legend>
+        <div class="form-group">
+          <label for="">Email</label>
+          <input type="text" class="form-control" formControlName="email" />
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input type="text" class="form-control" formControlName="password" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" (click)="login()">Login</button>
+        </div>
+        <div class="form-group">
+          <a (click)="showSignUp()"> Create Account</a>
+        </div>
+      </form>
+      <form [formGroup]="signupForm" *ngIf="!showLoginForm">
+        <legend>Create your Account</legend>
+        <div class="form-group">
+          <label for="">Email</label>
+          <input type="text" class="form-control" formControlName="email" />
+          <p
+            *ngIf="
+              signupForm.get('email').dirty &&
+              signupForm.get('email').errors?.email
+            "
+          >
+            Please provide correct email
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="">User</label>
+          <input type="text" class="form-control" formControlName="username" />
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input type="text" class="form-control" formControlName="password" />
+        </div>
+        <div class="form-group">
+          <button
+            class="btn btn-primary"
+            [disabled]="signupForm.invalid"
+            (click)="signup()"
+          >
+            Sign Up
+          </button>
+        </div>
+        <div class="form-group">
+          <a (click)="showSignUp()"> Already registered ???, Login here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<p *ngIf="showLoginErr">
+  <ngb-alert [dismissible]="false">
+    <strong>Warning!</strong> Better check yourself, you're not looking too
+    good.
+  </ngb-alert>
+</p>
+
+<p *ngIf="showSuccessAlert">
+  <ngb-alert [dismissible]="false">
+    <strong>Warning!</strong> Better check yourself, you're not looking too
+    good.
+  </ngb-alert>
+</p>
+<p *ngIf="showLoginERR">
+  <ngb-alert [dismissible]="false" [type]="'success'">
+    <strong>Warning!</strong> Better check yourself, you're not looking too
+    good.
+  </ngb-alert>
+</p>
